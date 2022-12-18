@@ -50,7 +50,15 @@ if(close){
 
 
 
-
+{/* <span>sproduct1</span>
+<h5>Cartoon</h5>
+<div class="star">
+    <i class="fas fa-star"></i>
+    <i class="fas fa-star"></i>
+    <i class="fas fa-star"></i>
+    <i class="fas fa-star"></i>
+    <i class="fas fa-star"></i>
+</div> */}
 
 
 
@@ -59,6 +67,7 @@ const product = [
         id:0,
         image: 'img/11.jpg',
         title: 'Title',
+        des:  'this is the vape',
         price: 120,
 
     },
@@ -66,6 +75,7 @@ const product = [
         id:1,
         image: 'img/12.jpg',
         title: 'Title2',
+        des:  'this is the vape',
         price: 121,
 
     },
@@ -73,12 +83,14 @@ const product = [
         id:2,
         image: 'img/13.jpg',
         title: 'Title3',
+        des:  'this is the vape',
         price: 122,
     },
     {
         id:3,
         image: 'img/12.jpg',
         title: 'Title2',
+        des:  'this is the vape',
         price: 121,
 
     },
@@ -86,6 +98,7 @@ const product = [
         id:4,
         image: 'img/13.jpg',
         title: 'Title3',
+        des:  'this is the vape',
         price: 122,
     }
 ];
@@ -98,17 +111,26 @@ const categories =[...new Set(product.map((item)=>
 
     document.getElementById('root').innerHTML = categories.map((item)=>
     {
-        var {image , title , price} = item;
+        var {image , title , price ,des} = item;
         return(
       
       `<div class='box'>
             <div class ='img-box'>
             <img class='images' src=${image}></img>
             </div>
-            <div class='bottom'>
+            <p>${des}</p>
+            
             <p>${title}</p>
-            <h2>$ ${price}.00</h2>` +
-            "<button onclick='addtocart("+(i++)+")'>Add to cart</button>"+
+            <h2>$ ${price}.00</h2>
+            <div class="star">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+        </div>
+            <div class='bottom'>` +
+            "<button  onclick='addtocart("+(i++)+")'>Add to cart</button>"+
             `</div>
             </div> `
 
@@ -143,7 +165,7 @@ function displaycart(a){
     else{
         document.getElementById('cartItem').innerHTML = cart.map((items)=>
         {
-            var { image, title , price}=items;
+            var { image, title , price , des}=items;
             total = total+price;
             document.getElementById("total").innerHTML = "$ "+total+".00";
             return(
